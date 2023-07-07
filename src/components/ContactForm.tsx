@@ -3,7 +3,11 @@ import styled from "styled-components";
 
 interface ContactFormProps {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
-  onInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onInputChange: (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+  ) => void;
   isValidEmail: boolean;
   isValidPhone: boolean;
 }
@@ -32,7 +36,12 @@ export const ContactForm = ({
             )}
           </InputContainer>
           <InputContainer>
-            <input type="text" name="name" placeholder="Name" />
+            <input
+              onChange={onInputChange}
+              type="text"
+              name="fullName"
+              placeholder="Name"
+            />
           </InputContainer>
           <InputContainer>
             <input
@@ -40,23 +49,24 @@ export const ContactForm = ({
               name="phone"
               onChange={onInputChange}
               placeholder="Phone Number"
-              pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
             />
             {!isValidPhone && (
-              <ValidationText>
-                Please enter a valid phone number
-              </ValidationText>
+              <ValidationText>Please enter a valid phone number</ValidationText>
             )}
           </InputContainer>
           <InputContainer>
-            <select>
+            <select name="purpose" onChange={onInputChange}>
               <option value="sales">Sales</option>
               <option value="press">Press</option>
               <option value="suppor">Support</option>
               <option value="demo">Demo</option>
             </select>
           </InputContainer>
-          <input type="submit" disabled={!isValidEmail || !isValidPhone} value="Submit" />
+          <input
+            type="submit"
+            disabled={!isValidEmail || !isValidPhone}
+            value="Submit"
+          />
         </StyledForm>
         <div></div>
       </div>

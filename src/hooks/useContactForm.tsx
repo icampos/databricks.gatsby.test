@@ -1,24 +1,42 @@
 import { useState } from "react";
-import { isValidEmailDomain, isValidPhoneNumber } from '../utils'
+import { isValidEmailDomain, isValidPhoneNumber } from "../utils";
 
 export const useContactForm = () => {
+  const [isValidEmail, setIsValidEmail] = useState(true);
+  const [isValidPhone, setIsValidPhone] = useState(true);
+  const [showSubmitMessage, setShowSubmitMessage] = useState(false);
 
-    const [isValidEmail, setIsValidEmail] = useState(true);
-    const [isValidPhone, setIsValidPhone] = useState(true);
+  const [formValues, setFormValues] = useState({
+    email: "",
+    fullName: "",
+    phone: "",
+    purpose: "",
+  });
 
-    const handleFormSubmit = (event: { preventDefault: () => void; }) => {
-        event.preventDefault();
-    };
+  const handleFormSubmit = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    if (isValidEmail && isValidPhone) {
+      setShowSubmitMessage(true);
+    }
+  };
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target;
-        if (name === 'email') {
-            setIsValidEmail(isValidEmailDomain(value))
-        }
-        if (name === 'phone') {
-            setIsValidPhone(isValidPhoneNumber(value))
-        }
-    };
+  const handleInputChange = (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const { name, value } = event.target;
+    name === "email" && setIsValidEmail(isValidEmailDomain(value));
+    name === "phone" && setIsValidPhone(isValidPhoneNumber(value));
+    setFormValues({ ...formValues, [name]: value });
+  };
 
-    return { handleInputChange, handleFormSubmit, isValidEmail, isValidPhone };
-}
+  return {
+    handleInputChange,
+    handleFormSubmit,
+    isValidEmail,
+    isValidPhone,
+    showSubmitMessage,
+    formValues,
+  };
+};

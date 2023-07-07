@@ -13,8 +13,14 @@ import { SideBar } from "../components/SideBar";
 import { useContactForm } from "../hooks/useContactForm";
 
 const ContactPage: React.FC<PageProps> = () => {
-  const { handleInputChange, handleFormSubmit, isValidEmail, isValidPhone } =
-    useContactForm();
+  const {
+    handleInputChange,
+    handleFormSubmit,
+    isValidEmail,
+    isValidPhone,
+    showSubmitMessage,
+    formValues,
+  } = useContactForm();
   return (
     <>
       <LearnMore />
@@ -25,12 +31,24 @@ const ContactPage: React.FC<PageProps> = () => {
           <p>Please provide some information to get started.</p>
         </ContactUsTitleContainer>
         <ContactFormContainer>
-          <ContactForm
-            onSubmit={handleFormSubmit}
-            onInputChange={handleInputChange}
-            isValidEmail={isValidEmail}
-            isValidPhone={isValidPhone}
-          />
+          {showSubmitMessage ? (
+            <div>
+              <h3>Hi {formValues.fullName}</h3>
+              <p>Thanks for filling out our form!</p>
+              <br/>
+              <p> We will reach out to you at{" "}
+              <b>{formValues.email}</b> or <br/> <b>{formValues.phone}</b> regarding your{" "}
+              <b>{formValues.purpose}</b> inquiry. </p>
+            </div>
+          ) : (
+            <ContactForm
+              onSubmit={handleFormSubmit}
+              onInputChange={handleInputChange}
+              isValidEmail={isValidEmail}
+              isValidPhone={isValidPhone}
+            />
+          )}
+
           <SideBar />
         </ContactFormContainer>
       </ContactPageContainer>
@@ -58,6 +76,9 @@ const ContactFormContainer = styled.div`
   gap: 33px;
   div:first-child {
     flex: 0 0 60%;
+  }
+  div:last-child {
+    flex: 0 0 40%;
   }
   margin-bottom: 14px;
 `;

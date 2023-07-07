@@ -9,4 +9,6 @@ const LearnMoreContainer = styled.div`
     text-align: center;
     padding: 8px 0;
     color: #ffffff;
+    font-size: 12px;
+    font-weight: 300;
 `
