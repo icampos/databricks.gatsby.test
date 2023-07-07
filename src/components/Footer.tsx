@@ -33,15 +33,15 @@ export const Footer: React.FC = () => (
 
 const FooterContainer = styled.div`
   width: 100%;
-  background-color: #222427;
+  background-color: var(--main-bg-color);
   padding: 60px 8px 0;
   color: #ffffff;
   p, a{
     color: #ffffff;
-    text-decoration: none;
-    font-weight: 400;
-    font-size: 14px;
+    font-size: 12px;
     text-align: left;
+    margin-bottom: 20px;
+    display: block;
   }
   p{
     line-height: 16.94px
@@ -52,11 +52,17 @@ const MenuContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 300px;
+  margin-bottom: 100px;
+  div:first-child{
+    p{
+      margin-bottom: 10px;
+    }
+  }
 `;
 
 const MenuItemContainer = styled.div`
   display: flex;
-  gap: 100px;
+  gap: 200px;
   li{
     list-style-type: none;
   }

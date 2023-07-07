@@ -1,17 +1,47 @@
-body{
-    margin: 0;
-    font-family: sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --main-bg-color: #222427;
+  --main-form-color: #C4C4C4;
+  --main-white-color: #ffffff;
+  --main-black-color: #000000;
+  --main-link-color: #0b92f1;
 }
 
-p, h4{
-    margin: 0;
-    font-weight: 400;
+body {
+  margin: 0;
+  font-family: 'Inter';
 }
 
-ul{
-    padding-inline-start: 0;
+h1{
+  font-size: 25px;
 }
 
-li{
-    text-align: initial;
+h2{
+  font-size: 24px;
+  font-weight: 300;
+}
+
+h4{
+  margin-bottom: 0;
+  font-weight: 600;
+  margin-top: 0;
+}
+
+p,
+a {
+  margin: 0;
+  font-weight: 300;
+}
+
+ul {
+  padding-inline-start: 0;
+}
+
+li {
+  text-align: initial;
+}
+
+a{
+  text-decoration: none;
 }
