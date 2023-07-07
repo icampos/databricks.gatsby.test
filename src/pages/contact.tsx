@@ -1,28 +1,32 @@
-import * as React from "react"
+import * as React from "react";
 
-import '../styles/styles.css';
+import "../styles/styles.css";
 import { styled } from "styled-components";
 
+import type { HeadFC, PageProps } from "gatsby";
 
-import type { HeadFC, PageProps } from "gatsby"
-
-import { LearnMore } from "../components/LearnMore"
-import {Footer} from '../components/Footer'
+import { LearnMore } from "../components/LearnMore";
+import { Footer } from "../components/Footer";
 
 const ContactPage: React.FC<PageProps> = () => {
   return (
     <>
-    <ContactPageTitle>Company Name</ContactPageTitle>
-   <LearnMore />
-   <Footer/>
-   </>
-  )
-}
+      <LearnMore />
+      <ContactPageTitle>Company Name</ContactPageTitle>
+      <ContactPageContainer></ContactPageContainer>
+      <Footer />
+    </>
+  );
+};
 
-export default ContactPage
+export default ContactPage;
 
-export const Head: HeadFC = () => <title>Contact</title>
+export const Head: HeadFC = () => <title>Contact</title>;
 
 const ContactPageTitle = styled.h1`
   text-align: center;
+`;
+
+const ContactPageContainer = styled.div`
+  display: flex;
 `

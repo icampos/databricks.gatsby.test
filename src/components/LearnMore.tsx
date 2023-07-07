@@ -5,7 +5,7 @@ export const LearnMore: React.FC = () => <LearnMoreContainer>Learn more about ou
 
 const LearnMoreContainer = styled.div`
     width: 100%;
-    background-color: #000000;
+    background-color: #222427;
     text-align: center;
     padding: 8px 0;
     color: #ffffff;
