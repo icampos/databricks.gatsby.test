@@ -3,32 +3,32 @@ import { styled } from "styled-components";
 import { MENU_ITEMS } from "../constants";
 
 export const Footer: React.FC = () => (
-    <FooterContainer>
-        <MenuContainer>
-            <div>
-                <p>✆ +1 (877) 777-7777</p>
-                <p>123 Main st, San Francisco, CA, 94107</p>
-            </div>
-            <MenuItemContainer>
-                {MENU_ITEMS.map((item) => (
-                    <div>
-                        <h4>
-                            {item.title}
-                        </h4>
-                        <ul>
-                            {item.links.map((link) => (
-                                <li>
-                                    <a href={link.link}>{link.title}</a>
-                                </li>
-                            ))}
-                        </ul>
+  <FooterContainer>
+    <MenuContainer>
+      <div>
+        <p>✆ +1 (877) 777-7777</p>
+        <p>123 Main st, San Francisco, CA, 94107</p>
+      </div>
+      <MenuItemContainer>
+        {MENU_ITEMS.map((item) => (
+          <div>
+            <h4>
+              {item.title}
+            </h4>
+            <ul>
+              {item.links.map((link) => (
+                <li>
+                  <a href={link.link}>{link.title}</a>
+                </li>
+              ))}
+            </ul>
 
-                    </div>
-                ))}
-            </MenuItemContainer>
-        </MenuContainer>
-        <CopyRightContainer>@2023 Example</CopyRightContainer>
-    </FooterContainer>
+          </div>
+        ))}
+      </MenuItemContainer>
+    </MenuContainer>
+    <CopyRightContainer>@2023 Example</CopyRightContainer>
+  </FooterContainer>
 );
 
 const FooterContainer = styled.div`

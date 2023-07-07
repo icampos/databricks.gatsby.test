@@ -10,7 +10,12 @@ import { Footer } from "../components/Footer";
 import { ContactForm } from "../components/ContactForm";
 import { SideBar } from "../components/SideBar";
 
+import { useContactForm } from '../hooks/useContactForm'
+
 const ContactPage: React.FC<PageProps> = () => {
+
+  const { handleInputChange, handleFormSubmit, isValidEmail } = useContactForm()
+  console.log(isValidEmail)
   return (
     <>
       <LearnMore />
@@ -21,7 +26,7 @@ const ContactPage: React.FC<PageProps> = () => {
           <p>Please provide some information to get started.</p>
         </ContactUsTitleContainer>
         <ContactFormContainer>
-          <ContactForm />
+          <ContactForm onSubmit={handleFormSubmit} onInputChange={handleInputChange} isValidEmail={isValidEmail} />
           <SideBar />
         </ContactFormContainer>
 
