@@ -1,6 +1,7 @@
 import React from "react";
 import { styled } from "styled-components";
 import { MENU_ITEMS } from "../constants";
+import { it } from "node:test";
 
 export const Footer: React.FC = () => (
   <FooterContainer>
@@ -11,7 +12,7 @@ export const Footer: React.FC = () => (
       </div>
       <MenuItemContainer>
         {MENU_ITEMS.map((item) => (
-          <div>
+          <div key={item.title}>
             <h4>
               {item.title}
             </h4>

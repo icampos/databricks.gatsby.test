@@ -10,12 +10,11 @@ import { Footer } from "../components/Footer";
 import { ContactForm } from "../components/ContactForm";
 import { SideBar } from "../components/SideBar";
 
-import { useContactForm } from '../hooks/useContactForm'
+import { useContactForm } from "../hooks/useContactForm";
 
 const ContactPage: React.FC<PageProps> = () => {
-
-  const { handleInputChange, handleFormSubmit, isValidEmail } = useContactForm()
-  console.log(isValidEmail)
+  const { handleInputChange, handleFormSubmit, isValidEmail, isValidPhone } =
+    useContactForm();
   return (
     <>
       <LearnMore />
@@ -26,10 +25,14 @@ const ContactPage: React.FC<PageProps> = () => {
           <p>Please provide some information to get started.</p>
         </ContactUsTitleContainer>
         <ContactFormContainer>
-          <ContactForm onSubmit={handleFormSubmit} onInputChange={handleInputChange} isValidEmail={isValidEmail} />
+          <ContactForm
+            onSubmit={handleFormSubmit}
+            onInputChange={handleInputChange}
+            isValidEmail={isValidEmail}
+            isValidPhone={isValidPhone}
+          />
           <SideBar />
         </ContactFormContainer>
-
       </ContactPageContainer>
       <Footer />
     </>
@@ -48,22 +51,21 @@ const ContactPageTitle = styled.h1`
 const ContactPageContainer = styled.div`
   padding: 0 186px;
   margin-bottom: 14px;
-`
+`;
 
 const ContactFormContainer = styled.div`
   display: flex;
   gap: 33px;
   div:first-child {
-      flex: 0 0 60%;
+    flex: 0 0 60%;
   }
   margin-bottom: 14px;
-`
+`;
 
 const ContactUsTitleContainer = styled.div`
-  h2{
+  h2 {
     margin-bottom: 22px;
   }
 
   margin-bottom: 46px;
-
-`
+`;

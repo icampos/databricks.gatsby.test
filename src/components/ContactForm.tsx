@@ -5,12 +5,14 @@ interface ContactFormProps {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   onInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   isValidEmail: boolean;
+  isValidPhone: boolean;
 }
 
 export const ContactForm = ({
   onSubmit,
   onInputChange,
   isValidEmail,
+  isValidPhone,
 }: ContactFormProps) => {
   return (
     <>
@@ -33,7 +35,18 @@ export const ContactForm = ({
             <input type="text" name="name" placeholder="Name" />
           </InputContainer>
           <InputContainer>
-            <input type="text" name="phone" placeholder="Phone Number" />
+            <input
+              type="tel"
+              name="phone"
+              onChange={onInputChange}
+              placeholder="Phone Number"
+              pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+            />
+            {!isValidPhone && (
+              <ValidationText>
+                Please enter a valid phone number
+              </ValidationText>
+            )}
           </InputContainer>
           <InputContainer>
             <select>
@@ -43,7 +56,7 @@ export const ContactForm = ({
               <option value="demo">Demo</option>
             </select>
           </InputContainer>
-          <input type="submit" disabled={!isValidEmail} value="Submit" />
+          <input type="submit" disabled={!isValidEmail || !isValidPhone} value="Submit" />
         </StyledForm>
         <div></div>
       </div>
