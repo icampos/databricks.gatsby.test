@@ -1,9 +1,12 @@
 import React from "react";
 import { styled } from "styled-components";
 import { MENU_ITEMS } from "../constants";
-import { it } from "node:test";
 
-export const Footer: React.FC = () => (
+interface FooterProps {
+  handleEmailRef: () => void;
+}
+
+export const Footer = ({handleEmailRef}:FooterProps) => (
   <FooterContainer>
     <MenuContainer>
       <div>
@@ -27,6 +30,9 @@ export const Footer: React.FC = () => (
           </div>
         ))}
       </MenuItemContainer>
+      <ArrowContainer>
+        <a onClick={handleEmailRef} href="#">↑</a>
+      </ArrowContainer>
     </MenuContainer>
     <CopyRightContainer>@2023 Example</CopyRightContainer>
   </FooterContainer>
@@ -52,12 +58,19 @@ const FooterContainer = styled.div`
 const MenuContainer = styled.div`
   display: flex;
   justify-content: center;
-  gap: 300px;
+  gap: 250px;
   margin-bottom: 100px;
   div:first-child{
     p{
       margin-bottom: 10px;
     }
+  }
+  @media (max-width: 1080px) {
+    gap: 50px;
+  }
+  @media (max-width: 768px) {
+    padding: 0 80px;
+   flex-direction: column;
   }
 `;
 
@@ -76,3 +89,10 @@ const CopyRightContainer = styled.div`
   padding: 24px 0;
   color: #ffffff;
 `;
+
+
+const ArrowContainer = styled.div`
+  a{
+    font-size: 20px;
+  }
+`

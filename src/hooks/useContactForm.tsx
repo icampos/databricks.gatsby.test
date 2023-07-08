@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { isValidEmailDomain, isValidPhoneNumber } from "../utils";
 
 export const useContactForm = () => {
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isValidPhone, setIsValidPhone] = useState(true);
   const [showSubmitMessage, setShowSubmitMessage] = useState(false);
+
+  const emailRef = useRef(null);
 
   const [formValues, setFormValues] = useState({
     email: "",
@@ -31,12 +33,21 @@ export const useContactForm = () => {
     setFormValues({ ...formValues, [name]: value });
   };
 
+  const handleEmailRef = () => {
+    if(emailRef){
+        //@ts-ignore
+        emailRef.current.focus();
+    }
+  };
+
   return {
     handleInputChange,
     handleFormSubmit,
+    handleEmailRef,
     isValidEmail,
     isValidPhone,
     showSubmitMessage,
     formValues,
+    emailRef
   };
 };

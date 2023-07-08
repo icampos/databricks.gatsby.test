@@ -10,6 +10,7 @@ interface ContactFormProps {
   ) => void;
   isValidEmail: boolean;
   isValidPhone: boolean;
+  emailRef: React.RefObject<HTMLInputElement>;
 }
 
 export const ContactForm = ({
@@ -17,6 +18,7 @@ export const ContactForm = ({
   onInputChange,
   isValidEmail,
   isValidPhone,
+  emailRef
 }: ContactFormProps) => {
   return (
     <>
@@ -28,6 +30,7 @@ export const ContactForm = ({
               name="email"
               placeholder="Email"
               onChange={onInputChange}
+              ref={emailRef}
             />
             {!isValidEmail && (
               <ValidationText>
@@ -104,6 +107,10 @@ const StyledForm = styled.form`
     cursor: pointer;
     &:disabled {
       opacity: 0.5;
+    }
+    @media (max-width: 1080px) {
+      float: none;
+      margin: 0 auto;
     }
   }
 `;

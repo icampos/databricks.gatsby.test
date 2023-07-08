@@ -16,10 +16,12 @@ const ContactPage: React.FC<PageProps> = () => {
   const {
     handleInputChange,
     handleFormSubmit,
+    handleEmailRef,
     isValidEmail,
     isValidPhone,
     showSubmitMessage,
     formValues,
+    emailRef
   } = useContactForm();
   return (
     <>
@@ -46,13 +48,14 @@ const ContactPage: React.FC<PageProps> = () => {
               onInputChange={handleInputChange}
               isValidEmail={isValidEmail}
               isValidPhone={isValidPhone}
+              emailRef={emailRef}
             />
           )}
 
           <SideBar />
         </ContactFormContainer>
       </ContactPageContainer>
-      <Footer />
+      <Footer handleEmailRef={handleEmailRef}/>
     </>
   );
 };
@@ -81,6 +84,10 @@ const ContactFormContainer = styled.div`
     flex: 0 0 40%;
   }
   margin-bottom: 14px;
+
+  @media (max-width: 1080px) {
+    flex-direction: column;
+  }
 `;
 
 const ContactUsTitleContainer = styled.div`
