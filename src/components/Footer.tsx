@@ -41,7 +41,7 @@ export const Footer = ({handleEmailRef}:FooterProps) => (
 const FooterContainer = styled.div`
   width: 100%;
   background-color: var(--main-bg-color);
-  padding: 60px 8px 0;
+  padding: 60px 0 8px;
   color: #ffffff;
   p, a{
     color: #ffffff;
